@@ -7,6 +7,24 @@
         body {
             background: #EEEEEE;
         }
+        .post {
+            font-size: 15px;
+            display: grid;
+            width: 95vw;
+            grid-template-columns: 1fr 4fr;
+            box-sizing: content-box;
+        }
+
+        .post_details {
+            color: #666666;
+            display: grid;
+            width: 300px;
+            height: 50px;
+            grid-template-columns: 70px 70px 70px;
+            box-sizing: content-box;
+        }
+
+        button.link { background:none; border:none; color: #FF6600; font-family: "Times New Roman"}
     </style>
 </head>
 <body>
@@ -22,10 +40,18 @@
 <hr>
 
 <div th:each="post : ${posts}">
-    <div><p th:text="${post.getId()}">Text</p></div>
-    <div><p th:text="${post.getTxt()}">Text</p></div>
+    <div class = "thread">
+        <div class="post_details">
+            <div> <p th:text="'№' + ${post.getId()}">Text</p></div>
+            <div> <p>Аноним</p> </div>
+            <p class = "post_link"> <a style= "text-decoration: none" th:href="@{/test/{id}(id=${post.getId()})}"> Ответ</a></p>
+        </div>
+        <div class = "post">
+            <center> <div class = "post_image"><img width = 200; src="/piglet.webp"></div> </center>
+            <div class = "post_message"><p th:text="${post.getTxt()}">Text</p></div>
+        </div>
+    </div>
     <hr>
 </div>
-
 </body>
 </html>
