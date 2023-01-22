@@ -1,17 +1,41 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>New person</title>
+    <title>Новый тред</title>
+    <style>
+        input[name="textbox"] {
+            border: 10px;
+            width: 500px;
+            height: 500px;
+        }
+        body {
+            background: #EEEEEE;
+        }
+        textarea {
+            resize: none;
+            background-color: #FFFFFF;
+            width: 70%;
+            height: 150px;
+            padding: 12px 20px;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 2px;
+            font-size: 16px;
+        }
+    </style>
 </head>
 <body>
 
-<form th:method="POST" th:action="@{/test}" th:object="${post}">
-    <label for="txt">Enter name: </label>
-    <input type="text" th:field="*{txt}" id="txt"/>
-    <br/>
+<center>
+    <center><p style = color:#FF6600><font size="+5">Новый тред:</font></p>
+<form th:method="POST" th:action="@{/test}" th:object="${post}" id = "testform">
+    <textarea type="text" th:field="*{txt}" id="txt"/>
+    <br>
+    <br>
     <input type="submit" value="Отправить"/>
 </form>
+</center>
 
 </body>
 </html>
