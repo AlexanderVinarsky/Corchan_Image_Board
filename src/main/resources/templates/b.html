@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Корчан</title>
+    <style>
+        body {
+            background: #EEEEEE;
+        }
+    </style>
+</head>
+<body>
+<style>
+    button.link { background:none; border:none; color: #FF6600; font-family: "Times New Roman"}
+</style>
+<center><p style = color:#FF6600><font size="+10">Бред</font></p>
+<form method="GET" action="new">
+        <button class = "link" type="submit" style="font-size : 30px; width: 100%; height: 100px;"> Создать тред </button>
+</form></center>
+</form>
+
+<hr>
+
+<div th:each="post : ${posts}">
+    <div><p th:text="${post.getId()}">Text</p></div>
+    <div><p th:text="${post.getTxt()}">Text</p></div>
+    <hr>
+</div>
+
+</body>
+</html>

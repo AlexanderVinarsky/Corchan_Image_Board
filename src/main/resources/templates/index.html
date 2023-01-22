@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Корчан</title>
+    <style>
+        body {
+            background: #EEEEEE;
+        }
+        button.link { background:none; border:none; color: #FF6600; font-family: "Times New Roman"}
+    </style>
+</head>
+<body>
+<center><p><font size="+10">Сап, Корчан!</font></p></center>
+
+<img th:src="@{/img/start_logo.png}"/>
+
+<hr>
+
+<center><p><font size="+5">Доски:</font></p></center>
+<center><form method="GET" action="/test/b">
+    <button class = "link" type="submit" style="font-size : 30px; width: 100%; height: 100px;"> /b/ - Бред </button>
+</form> </center>
+</form>
+<center><p style = color:#FF6600><font size="+0">
+    Планируются: <br>
+    /un/ - Образование <br>
+    /wrk/ - Работа <br>
+    /guro/ - Шок-контент <br>
+</font></p></center>
+
+<hr>
+
+</body>
+</html>
