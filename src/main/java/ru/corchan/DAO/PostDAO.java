@@ -24,13 +24,15 @@ public class PostDAO {
     public void create(Post post) {
         jdbcTemplate.update("INSERT INTO posts VALUES(DEFAULT, ?)", post.getTxt());
     }
+
+    public Post showPost(int id){
+        return jdbcTemplate.query("SELECT * FROM posts WHERE id = ?", new Object[]{id}, new PostMapper())
+                .stream().findAny().orElse(null);
+    }
+
 }
 
 
-    /*public Thread showPerson(int id){
-        return jdbcTemplate.query("SELECT * FROM threads WHERE id = ?", new Object[]{id}, new ThreadMapper())
-                .stream().findAny().orElse(null);
-    }*/
 
     /*
 

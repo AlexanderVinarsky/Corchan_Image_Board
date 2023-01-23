@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import ru.corchan.DAO.PostDAO;
 import ru.corchan.models.Post;
 
@@ -36,5 +35,11 @@ public class PostController {
     public String create(@ModelAttribute("post") Post post) {
         postDAO.create(post);
         return "redirect:test/b";
+    }
+
+    @GetMapping("/{id}")
+    public String openThread(@PathVariable("id") int id, Model model) {
+        model.addAttribute("post", postDAO.showPost(id));
+        return "b/thread";
     }
 }

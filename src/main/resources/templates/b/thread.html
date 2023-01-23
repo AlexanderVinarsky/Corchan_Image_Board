@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Тред</title>
+    <style>
+        body {
+            background: #EEEEEE;
+        }
+        .post {
+            font-size: 15px;
+            display: grid;
+            width: 95vw;
+            grid-template-columns: 1fr 4fr;
+            box-sizing: content-box;
+        }
+
+        .post_details {
+            color: #666666;
+            display: grid;
+            width: 300px;
+            height: 50px;
+            grid-template-columns: 70px 70px 70px;
+            box-sizing: content-box;
+        }
+    </style>
+</head>
+<body>
+<div class = "thread">
+    <div class="post_details">
+        <div> <p th:text="'№' + ${post.getId()}">Text</p></div>
+        <div> <p>Аноним</p> </div>
+        <p class = "post_link"> <a style= "text-decoration: none" th:href="@{/test/{id}(id=${post.getId()})}"> Ответ</a></p>
+    </div>
+    <div class = "post">
+        <center> <div class = "post_image"><img width = 200; src="/piglet.webp"></div> </center>
+        <div class = "post_message"><p th:text="${post.getTxt()}">Text</p></div>
+    </div>
+</div>
+</body>
+</html>
