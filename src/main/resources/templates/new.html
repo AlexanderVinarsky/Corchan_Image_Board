@@ -29,13 +29,16 @@
 
 <center>
     <center><p style = color:#FF6600><font size="+5">Новый тред:</font></p>
-<form th:method="POST" th:action="@{/test}" th:object="${post}" id = "testform">
-    <textarea type="text" th:field="*{txt}" id="txt"/>
+<form th:method="POST" th:action="@{/b}" th:object="${post}">
+    <label>
+        <textarea th:field="*{txt}"></textarea>
+    </label>
+    <input type="hidden" th:field="*{inThread}">
     <br>
     <br>
     <input type="submit" value="Отправить"/>
 </form>
 </center>
-
+</center>
 </body>
 </html>

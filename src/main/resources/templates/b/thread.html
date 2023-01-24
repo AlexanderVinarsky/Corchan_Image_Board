@@ -4,8 +4,28 @@
     <meta charset="UTF-8">
     <title>Тред</title>
     <style>
+        input[name="textbox"] {
+            border: 10px;
+            width: 500px;
+            height: 500px;
+        }
         body {
             background: #EEEEEE;
+        }
+        textarea {
+            resize: none;
+            background-color: #FFFFFF;
+            width: 70%;
+            height: 150px;
+            padding: 12px 20px;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 2px;
+            font-size: 16px;
+        }
+        .replies {
+            background-color: #cccccc;
+            padding: 10px;
         }
         .post {
             font-size: 15px;
@@ -26,16 +46,46 @@
     </style>
 </head>
 <body>
-<div class = "thread">
+<center>
+
+
+    <form th:method="POST" th:action="@{/b}" th:object="${post}">
+        <textarea th:field="*{txt}"/>
+        <input type = "hidden" name="inThread" th:value="${post.getId()}"/>
+    <br>
+    <br>
+    <input type="submit" value="Отправить"/>
+</form>
+    <br>
+</center>
+
+<hr>
+
+
+<div class = "OP-post">
     <div class="post_details">
         <div> <p th:text="'№' + ${post.getId()}">Text</p></div>
         <div> <p>Аноним</p> </div>
-        <p class = "post_link"> <a style= "text-decoration: none" th:href="@{/test/{id}(id=${post.getId()})}"> Ответ</a></p>
+        <p class = "post_link"> <a style= "text-decoration: none" th:href="@{/b/{id}(id=${post.getId()})}"> Ответ</a></p>
     </div>
     <div class = "post">
-        <center> <div class = "post_image"><img width = 200; src="/piglet.webp"></div> </center>
+        <center> <div class = "post_image"><img width = 200; src="/piglet.webp" alt="post_image"></div> </center>
         <div class = "post_message"><p th:text="${post.getTxt()}">Text</p></div>
     </div>
+</div>
+<hr>
+<div th:each="reply : ${replies}">
+    <div class = "replies">
+        <div class="post_details">
+            <div> <p th:text="'№' + ${reply.getId()}">Text</p></div>
+            <div> <p>Аноним</p> </div>
+        </div>
+        <div class = "post">
+            <center> <div class = "post_image"><img width = 200; src="/piglet.webp"></div> </center>
+            <div class = "post_message"><p th:text="${reply.getTxt()}">Text</p></div>
+        </div>
+    </div>
+    <br>
 </div>
 </body>
 </html>

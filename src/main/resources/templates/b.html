@@ -29,7 +29,7 @@
 </head>
 <body>
 <center><p style = color:#FF6600><font size="+10">Бред</font></p>
-<form method="GET" action="new">
+<form method="GET" action="b/new">
         <button class = "link" type="submit" style="font-size : 30px; width: 100%; height: 100px;"> Создать тред </button>
 </form></center>
 
@@ -40,7 +40,7 @@
         <div class="post_details">
             <div> <p th:text="'№' + ${post.getId()}">Text</p></div>
             <div> <p>Аноним</p> </div>
-            <p class = "post_link"> <a style= "text-decoration: none" th:href="@{/test/{id}(id=${post.getId()})}"> Ответ</a></p>
+            <p class = "post_link"> <a style= "text-decoration: none" th:href="@{/b/{id}(id=${post.getId()})}"> Ответ</a></p>
         </div>
         <div class = "post">
             <center> <div class = "post_image"><img width = 200; src="/piglet.webp"></div> </center>

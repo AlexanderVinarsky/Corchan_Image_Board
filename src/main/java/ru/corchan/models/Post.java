@@ -9,12 +9,15 @@ public class Post {
     @NotNull
     private String txt;
 
+    private Integer inThread;
+
     public Post() {
     }
 
     public Post(Integer id, String text) {
         this.id = id;
         this.txt = text;
+        this.inThread = inThread;
     }
 
     public Integer getId() {
@@ -25,11 +28,19 @@ public class Post {
         return txt;
     }
 
+    public Integer getInThread() {
+        return inThread;
+    }
+
     public void setId(Integer id) {
         this.id = id;
     }
 
     public void setTxt(String txt) {
         this.txt = txt;
+    }
+
+    public void setInThread(Integer inThread) {
+        this.inThread = inThread;
     }
 }

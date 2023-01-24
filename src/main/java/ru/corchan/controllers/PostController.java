@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.*;
 import ru.corchan.DAO.PostDAO;
 import ru.corchan.models.Post;
 
+import static java.lang.String.valueOf;
+
 @Controller
-@RequestMapping("/test")
+@RequestMapping("/b")
 public class PostController {
 
     private final PostDAO postDAO;
@@ -19,7 +21,7 @@ public class PostController {
         this.postDAO =postDAO;
     }
 
-    @GetMapping("/b")
+    @GetMapping("")
     public String b(Model model) {
         model.addAttribute("posts", postDAO.showPosts());
         return "b";
@@ -34,12 +36,16 @@ public class PostController {
     @PostMapping()
     public String create(@ModelAttribute("post") Post post) {
         postDAO.create(post);
-        return "redirect:test/b";
+        if (post.getInThread()==0)
+            return "redirect:/b";
+        else
+            return "redirect:/b/" + valueOf(post.getInThread());
     }
 
     @GetMapping("/{id}")
     public String openThread(@PathVariable("id") int id, Model model) {
         model.addAttribute("post", postDAO.showPost(id));
+        model.addAttribute("replies", postDAO.showReplies(postDAO.getPost(id)));
         return "b/thread";
     }
 }
