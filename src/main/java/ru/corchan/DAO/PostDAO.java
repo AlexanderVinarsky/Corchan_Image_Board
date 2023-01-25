@@ -26,7 +26,7 @@ public class PostDAO {
     }
 
     public void create(Post post) {
-        jdbcTemplate.update("INSERT INTO posts VALUES(DEFAULT, ?, ?)", post.getTxt(), post.getInThread());
+        jdbcTemplate.update("INSERT INTO posts VALUES(DEFAULT, ?, ?, null)", post.getTxt(), post.getInThread());
     }
 
 

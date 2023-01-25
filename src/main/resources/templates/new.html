@@ -28,7 +28,7 @@
 <body>
 
 <center>
-    <center><p style = color:#FF6600><font size="+5">Новый тред:</font></p>
+    <p style = color:#FF6600><font size="+5">Новый тред:</font></p>
 <form th:method="POST" th:action="@{/b}" th:object="${post}">
     <label>
         <textarea th:field="*{txt}"></textarea>
@@ -36,9 +36,13 @@
     <input type="hidden" th:field="*{inThread}">
     <br>
     <br>
+    <br>
+    <label>Добавить фото:</label> <br>
+    <input type="file" th:name="image1" th:field="*{}" accept="image/png, image/jpeg">
+
+    <br>
     <input type="submit" value="Отправить"/>
 </form>
-</center>
 </center>
 </body>
 </html>

@@ -11,6 +11,8 @@ public class Post {
 
     private Integer inThread;
 
+    private String image1;
+
     public Post() {
     }
 
@@ -32,6 +34,10 @@ public class Post {
         return inThread;
     }
 
+    public String getImage1() {
+        return image1;
+    }
+
     public void setId(Integer id) {
         this.id = id;
     }
@@ -42,5 +48,9 @@ public class Post {
 
     public void setInThread(Integer inThread) {
         this.inThread = inThread;
+    }
+
+    public void setImage1(String image1) {
+        this.image1 = image1;
     }
 }

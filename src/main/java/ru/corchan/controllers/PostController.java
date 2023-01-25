@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.util.StringUtils;
 import ru.corchan.DAO.PostDAO;
 import ru.corchan.models.Post;
 
@@ -27,9 +29,11 @@ public class PostController {
         return "b";
     }
 
-    @GetMapping("/new")
-    public String newPost(@ModelAttribute("post") Post post) {
-        //post.addAttribute("post", new Post());
+    @PostMapping("/new")
+    public String newPost(@ModelAttribute("post") Post post, @RequestParam("image1") MultipartFile multipartFile) {
+        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+        post.setImage1(fileName);
+
         return "new";
     }
 
